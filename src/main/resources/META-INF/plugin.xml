@@ -1,0 +1,55 @@
+<idea-plugin>
+    <id>com.github.xiaomatech.codegen-plugin</id>
+    <name>Codegen</name>
+    <vendor url="https://github.com/xiaomatech/codegen-plugin" email="xianhuawei.zhcn@qq.com">xiaomatech</vendor>
+    <category>Code Tools</category>
+    <description><![CDATA[
+<div>
+    <h1> Codegen Plugin </h1>
+    <div>
+        <p> A plugin for create, delete, update, and retrieve can help you quickly generate relevant code based on the
+            database table structure.</p>
+        <p> There are two ways to use: </p>
+        <ul>
+            <li> Generate project from Codegen Plugin</li>
+            <li> Project right click to generate code</li>
+        </ul>
+        <p> For more information please visit: <a href="https://github.com/xiaomatech/codegen-plugin">GitHub</a></p>
+    </div>
+</div>
+    ]]></description>
+    <change-notes><![CDATA[
+        Change notes will be filled by gradle build
+]]></change-notes>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <depends>org.jetbrains.idea.maven</depends>
+
+    <idea-version since-build="173.0"/>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <projectTemplatesFactory implementation="com.github.xiaomatech.crud.intellij.plugin.wizard.CrudTemplateFactory"/>
+        <applicationService serviceImplementation="com.github.xiaomatech.crud.intellij.plugin.setting.CrudSettings"/>
+    </extensions>
+
+    <actions>
+        <group id="CrudActionGroup" text="Codegen"
+               popup="true" icon="/icons/crud.png">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </group>
+        <!-- Add your actions here -->
+        <action class="com.github.xiaomatech.crud.intellij.plugin.action.NewFileAction"
+                id="crud.NewFileAction" description="创建Codegen"
+                icon="/icons/mysql.png"
+                text="从MySQL生成">
+            <add-to-group group-id="CrudActionGroup"/>
+        </action>
+    </actions>
+</idea-plugin>

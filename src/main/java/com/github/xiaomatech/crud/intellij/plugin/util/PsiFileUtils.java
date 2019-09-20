@@ -135,14 +135,24 @@ public class PsiFileUtils {
     }
 
     public static void createFront(Project project, VirtualFile packageDir, Model model) throws Exception {
-        VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + ".vue");
+        VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + ".list.vue");
         StringWriter sw = new StringWriter();
         String templateName;
-        templateName = "vue.ftl";
+        templateName = "front/list.vue.ftl";
         Template template = freemarker.getTemplate(templateName);
         template.process(model, sw);
         virtualFile.setBinaryContent(sw.toString().getBytes(CrudUtils.DEFAULT_CHARSET));
         CrudUtils.addWaitOptimizeFile(virtualFile);
+
+	VirtualFile virtualFileModal = packageDir.createChildData(project, model.getSimpleName() + ".modal.vue");
+        StringWriter swModal = new StringWriter();
+        String templateNameModal;
+        templateNameModal = "front/modal.vue.ftl";
+        Template templateModal = freemarker.getTemplate(templateNameModal);
+        template.process(model, swModal);
+        virtualFileModal.setBinaryContent(swModal.toString().getBytes(CrudUtils.DEFAULT_CHARSET));
+        CrudUtils.addWaitOptimizeFile(virtualFileModal);
+
     }
 
     public static void createDao(Project project, VirtualFile packageDir, Dao dao) throws Exception {

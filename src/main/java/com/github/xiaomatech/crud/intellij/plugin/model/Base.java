@@ -13,6 +13,7 @@ public abstract class Base {
     private String comment;
     private String name;
 
+
     /**
      * @param comment 类的注释
      * @param name    类的全限定名
@@ -24,6 +25,10 @@ public abstract class Base {
 
     public String getPackage() {
         return StringUtils.substringBeforeLast(name, ".");
+    }
+
+    public String getParentPackage() {
+        return StringUtils.substringBeforeLast(getPackage(), ".");
     }
 
     public abstract Set<String> getImports();

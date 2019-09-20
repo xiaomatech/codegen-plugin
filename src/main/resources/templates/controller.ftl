@@ -1,5 +1,5 @@
 package ${package};
-import ${package}.common.Result;
+import ${parentPackage}.common.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

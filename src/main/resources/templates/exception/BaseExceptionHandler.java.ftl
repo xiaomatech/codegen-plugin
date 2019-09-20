@@ -1,6 +1,6 @@
 package ${package+'.exception'};
 
-import ${package}.controller.common.Result;
+import ${package}.common.Result;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

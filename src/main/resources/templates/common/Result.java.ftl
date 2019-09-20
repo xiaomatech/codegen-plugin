@@ -1,4 +1,4 @@
-package ${package+'.controller.common'};;
+package ${package+'.common'};
 
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;

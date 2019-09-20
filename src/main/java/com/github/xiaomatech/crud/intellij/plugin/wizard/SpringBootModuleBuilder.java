@@ -104,7 +104,7 @@ public class SpringBootModuleBuilder extends ModuleBuilder {
         //Application类生成
         PsiFileUtils.createApplicationJava(project, createPackageDir(selection.getPackage()), selection);
 
-        PsiFileUtils.createResultJava(project, createPackageDir(selection.getPackage() + ".controller.common"), selection);
+        PsiFileUtils.createResultJava(project, createPackageDir(selection.getPackage() + ".common"), selection);
         PsiFileUtils.createExceptionHandler(project, createPackageDir(selection.getPackage() + ".exception"), selection);
         PsiFileUtils.createBaseException(project, createPackageDir(selection.getPackage() + ".exception"), selection);
 	PsiFileUtils.createDomainUtils(project, createTestPackageDir(selection.getPackage()), selection);

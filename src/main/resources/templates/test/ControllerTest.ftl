@@ -1,6 +1,6 @@
 package ${package};
 
-import ${package}.DomainUtils;
+import ${parentPackage}.DomainUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.core.StringContains;

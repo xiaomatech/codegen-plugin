@@ -1,6 +1,6 @@
 package ${package}.impl;
 
-import ${package}.DomainUtils;
+import ${parentPackage}.DomainUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;

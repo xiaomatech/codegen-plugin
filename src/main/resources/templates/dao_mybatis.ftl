@@ -2,7 +2,7 @@ package ${package};
 
 import com.github.pagehelper.Page;
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 /**

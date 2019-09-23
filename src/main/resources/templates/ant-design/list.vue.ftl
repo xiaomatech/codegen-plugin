@@ -128,15 +128,15 @@
               return parseInt(index)+1;
             }
            },
-          <#list table.fields as field>
-           <#if field.name !='id' && !"createTime,createBy,updateTime,updateBy"?contains(field.name)>
+          <#list fields as field>
+           <#if field.name !='id' && field.name !="createTime" && field.name != "createBy" && field.name !="updateTime" && field.name != "updateBy">
 		   {
             title: '${field.comment}',
             align:"center",
             dataIndex: '${field.name}'
            },
-		   </#if>
-		  </#list>
+	   </#if>
+	  </#list>
           {
             title: '操作',
             dataIndex: 'action',
@@ -148,8 +148,6 @@
           list: "/v1/${simpleName?uncap_first}/page",
           delete: "/v1/${simpleName?uncap_first}/delete",
           deleteBatch: "/v1/${simpleName?uncap_first}/deleteBatch",
-          exportXlsUrl: "v1/${simpleName?uncap_first}/exportXls",
-          importExcelUrl: "v1/${simpleName?uncap_first}/importExcel",
        },
     }
   },

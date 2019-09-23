@@ -118,7 +118,7 @@ public class SpringBootModuleBuilder extends ModuleBuilder {
         selection.setExceptionPackage(selection.getPackage() + ".exception");
         selection.setAspectPackage(selection.getPackage() + ".aspect");
         selection.setUtilPackage(selection.getPackage() + ".util");
-        selection.setVoPackage(selection.getPackage() + ".entity.vo");
+        selection.setVoPackage(selection.getPackage() + ".vo");
         //front(vue)
         selection.setFrontPackage(selection.getPackage() + ".vue");
 

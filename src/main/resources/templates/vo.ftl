@@ -1,4 +1,4 @@
-package ${package}.vo;
+package ${parentPackage}.vo;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -9,7 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 /**

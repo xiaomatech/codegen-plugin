@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 /**

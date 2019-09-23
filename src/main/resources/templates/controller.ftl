@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 <#assign model=service.dao.model />

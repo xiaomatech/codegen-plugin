@@ -138,7 +138,7 @@ public class PsiFileUtils {
         VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + ".list.vue");
         StringWriter sw = new StringWriter();
         String templateName;
-        templateName = "front/list.vue.ftl";
+        templateName = "ant-design/list.vue.ftl";
         Template template = freemarker.getTemplate(templateName);
         template.process(model, sw);
         virtualFile.setBinaryContent(sw.toString().getBytes(CrudUtils.DEFAULT_CHARSET));
@@ -147,9 +147,9 @@ public class PsiFileUtils {
 	VirtualFile virtualFileModal = packageDir.createChildData(project, model.getSimpleName() + ".modal.vue");
         StringWriter swModal = new StringWriter();
         String templateNameModal;
-        templateNameModal = "front/modal.vue.ftl";
+        templateNameModal = "ant-design/modal.vue.ftl";
         Template templateModal = freemarker.getTemplate(templateNameModal);
-        template.process(model, swModal);
+        templateModal.process(model, swModal);
         virtualFileModal.setBinaryContent(swModal.toString().getBytes(CrudUtils.DEFAULT_CHARSET));
         CrudUtils.addWaitOptimizeFile(virtualFileModal);
 

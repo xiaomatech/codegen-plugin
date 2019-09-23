@@ -2,7 +2,7 @@ package ${package};
 
 import lombok.Data;
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 /**

@@ -11,20 +11,20 @@
     <a-spin :spinning="confirmLoading">
       <a-form :form="form">
       
-<#list table.fields as field><#rt/>
-<#if field.name !='id' && !"createTime,createBy,updateTime,updateBy"?contains(field.name)><#rt/>
+<#list fields as field><#rt/>
+<#if field.name !='id' && field.name !="createTime" && field.name != "createBy" && field.name !="updateTime" && field.name != "updateBy" ><#rt/>
         <a-form-item
           :labelCol="labelCol"
           :wrapperCol="wrapperCol"
           label="${field.comment}">
           <#if field.typeName =='date'>
-          <a-date-picker v-decorator="[ '${field.name}', <#if field.customMap.NULL =='NO'>validatorRules.${field.name} <#else>{}</#if>]" />
+          <a-date-picker v-decorator="[ '${field.name}', {}]" />
           <#elseif field.typeName =='datetime'>
-          <a-date-picker showTime format='YYYY-MM-DD HH:mm:ss' v-decorator="[ '${field.name}', <#if field.customMap.NULL =='NO'>validatorRules.${field.name} <#else>{}</#if>]" />
+          <a-date-picker showTime format='YYYY-MM-DD HH:mm:ss' v-decorator="[ '${field.name}', {}]" />
           <#elseif "int,decimal,double,"?contains(field.typeName)>
-          <a-input-number v-decorator="[ '${field.name}', <#if field.customMap.NULL =='NO'>validatorRules.${field.name} <#else>{}</#if>]" />
+          <a-input-number v-decorator="[ '${field.name}', {}]" />
           <#else>
-          <a-input placeholder="请输入${field.comment}" v-decorator="['${field.name}', <#if field.customMap.NULL =='NO'>validatorRules.${field.name} <#else>{}</#if>]" />
+          <a-input placeholder="请输入${field.comment}" v-decorator="['${field.name}', {}]" />
           </#if>
         </a-form-item>
 </#if>
@@ -59,13 +59,11 @@
         confirmLoading: false,
         form: this.$form.createForm(this),
         validatorRules:{
-        <#list table.fields as field>
+        <#list fields as field>
         <#if field.name !='id'>
-        <#if field.customMap.NULL =='NO'>
         ${field.name}:{rules: [{ required: true, message: '请输入${field.comment}!' }]},
         </#if>
-        </#if>
-	    </#list>
+	</#list>
         },
         url: {
           add: "/v1/${simpleName?uncap_first}/add",
@@ -84,9 +82,9 @@
         this.model = Object.assign({}, record);
         this.visible = true;
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model<#list table.fields as field><#if field.name !='id' && field.typeName?index_of("date")==-1 &&!"createBy,updateBy"?contains(field.name)>,'${field.name}'</#if></#list>))
-		  //时间格式化
-          <#list table.fields as field>
+          this.form.setFieldsValue(pick(this.model<#list fields as field><#if field.name !='id' && field.typeName?index_of("date")==-1 && field.name !="createTime" && field.name != "createBy" && field.name !="updateTime" && field.name != "updateBy" >,'${field.name}'</#if></#list>))
+	  //时间格式化
+          <#list fields as field>
           <#if field.name !='id' && field.typeName?index_of("date")!=-1 && !"createTime,updateTime"?contains(field.name)>
           this.form.setFieldsValue({${field.name}:this.model.${field.name}?moment(this.model.${field.name}):null})
           </#if>
@@ -115,7 +113,7 @@
             }
             let formData = Object.assign(this.model, values);
             //时间格式化
-            <#list table.fields as field>
+            <#list fields as field>
             <#if field.name !='id' && field.typeName =='date'>
             formData.${field.name} = formData.${field.name}?formData.${field.name}.format():null;
             <#elseif field.name !='id' && field.typeName =='datetime' && !"createTime,updateTime"?contains(field.name) >

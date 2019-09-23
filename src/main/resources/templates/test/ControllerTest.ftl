@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Date;
 
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 <#assign model=service.dao.model />

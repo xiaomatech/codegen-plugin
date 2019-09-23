@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 import lombok.extern.slf4j.Slf4j;

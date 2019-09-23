@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.data.domain.Page;
 </#if>
 <#list imports as import>
-    import ${import};
+import ${import};
 </#list>
 
 /**

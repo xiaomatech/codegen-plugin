@@ -145,7 +145,7 @@
           }
         ],
 		url: {
-          list: "/v1/${simpleName?uncap_first}/page",
+          list: "/v1/${simpleName?uncap_first}/list",
           delete: "/v1/${simpleName?uncap_first}/delete",
           deleteBatch: "/v1/${simpleName?uncap_first}/deleteBatch",
        },

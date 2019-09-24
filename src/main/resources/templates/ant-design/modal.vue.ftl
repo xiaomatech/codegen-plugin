@@ -133,17 +133,12 @@
               that.confirmLoading = false;
               that.close();
             })
-
-
-
           }
         })
       },
       handleCancel () {
         this.close()
       },
-
-
     }
   }
 </script>

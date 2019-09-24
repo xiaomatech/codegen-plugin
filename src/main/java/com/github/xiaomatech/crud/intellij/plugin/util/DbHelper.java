@@ -139,7 +139,7 @@ public class DbHelper {
             List<Column> ls = new ArrayList<>();
             while (rs.next()) {
                 String columnName = rs.getString("COLUMN_NAME");
-                Column column = new Column(rs.getString("REMARKS"), columnName, rs.getInt("DATA_TYPE"));
+                Column column = new Column(rs.getString("REMARKS"), columnName, rs.getInt("DATA_TYPE"), rs.getInt("COLUMN_SIZE"), rs.getString("IS_NULLABLE"), rs.getString("COLUMN_DEF"));
                 if (!StringUtils.isNullOrEmpty(primaryKey) && columnName.equals(primaryKey)) {
                     column.setId(true);
                 }

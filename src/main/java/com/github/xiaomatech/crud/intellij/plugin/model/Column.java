@@ -39,6 +39,10 @@ public class Column {
         return columnSize;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getComment() {
         return comment;
     }

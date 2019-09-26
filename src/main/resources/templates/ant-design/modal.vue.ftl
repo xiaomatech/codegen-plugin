@@ -17,11 +17,11 @@
           :labelCol="labelCol"
           :wrapperCol="wrapperCol"
           label="${field.comment}">
-          <#if field.typeName =='date'>
+          <#if field type =='date'>
           <a-date-picker v-decorator="[ '${field.name}', {}]" />
-          <#elseif field.typeName =='datetime'>
+          <#elseif field type =='datetime'>
           <a-date-picker showTime format='YYYY-MM-DD HH:mm:ss' v-decorator="[ '${field.name}', {}]" />
-          <#elseif "int,decimal,double,"?contains(field.typeName)>
+          <#elseif "int,decimal,double,"?contains(field type)>
           <a-input-number v-decorator="[ '${field.name}', {}]" />
           <#else>
           <a-input placeholder="请输入${field.comment}" v-decorator="['${field.name}', {}]" />
@@ -82,10 +82,10 @@
         this.model = Object.assign({}, record);
         this.visible = true;
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model<#list fields as field><#if field.name !='id' && field.typeName?index_of("date")==-1 && field.name !="createTime" && field.name != "createBy" && field.name !="updateTime" && field.name != "updateBy" >,'${field.name}'</#if></#list>))
+          this.form.setFieldsValue(pick(this.model<#list fields as field><#if field.name !='id' && field type?index_of("date")==-1 && field.name !="createTime" && field.name != "createBy" && field.name !="updateTime" && field.name != "updateBy" >,'${field.name}'</#if></#list>))
 	  //时间格式化
           <#list fields as field>
-          <#if field.name !='id' && field.typeName?index_of("date")!=-1 && !"createTime,updateTime"?contains(field.name)>
+          <#if field.name !='id' && field type?index_of("date")!=-1 && !"createTime,updateTime"?contains(field.name)>
           this.form.setFieldsValue({${field.name}:this.model.${field.name}?moment(this.model.${field.name}):null})
           </#if>
           </#list>
@@ -114,9 +114,9 @@
             let formData = Object.assign(this.model, values);
             //时间格式化
             <#list fields as field>
-            <#if field.name !='id' && field.typeName =='date'>
+            <#if field.name !='id' && field type =='date'>
             formData.${field.name} = formData.${field.name}?formData.${field.name}.format():null;
-            <#elseif field.name !='id' && field.typeName =='datetime' && !"createTime,updateTime"?contains(field.name) >
+            <#elseif field.name !='id' && field type =='datetime' && !"createTime,updateTime"?contains(field.name) >
             formData.${field.name} = formData.${field.name}?formData.${field.name}.format('YYYY-MM-DD HH:mm:ss'):null;
             </#if>
             </#list>

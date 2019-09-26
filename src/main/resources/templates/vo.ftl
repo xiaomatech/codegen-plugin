@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import java.io.Serializable;
+import java.util.Date;
 
 <#list imports as import>
 import ${import};

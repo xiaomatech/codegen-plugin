@@ -16,8 +16,8 @@ public class Table {
         this.comment = comment;
         this.name = name;
         this.columns = columns;
-	this.exportKeys = exportKeys;	
-	this.importKeys = importKeys;
+        this.exportKeys = exportKeys;
+        this.importKeys = importKeys;
     }
 
     public String getName() {

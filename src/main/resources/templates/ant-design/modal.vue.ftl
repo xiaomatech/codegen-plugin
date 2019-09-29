@@ -7,19 +7,19 @@
     @ok="handleOk"
     @cancel="handleCancel"
     cancelText="关闭">
-    
+
     <a-spin :spinning="confirmLoading">
       <a-form :form="form">
-      
+
 <#list fields as field><#rt/>
 <#if field.name !='id' && field.name !="createTime" && field.name != "createBy" && field.name !="updateTime" && field.name != "updateBy" ><#rt/>
         <a-form-item
           :labelCol="labelCol"
           :wrapperCol="wrapperCol"
           label="${field.comment}">
-          <#if field type =='date'>
+          <#if field.typeName=='date'>
           <a-date-picker v-decorator="[ '${field.name}', {}]" />
-          <#elseif field type =='datetime'>
+          <#elseif field.typeName=='datetime'>
           <a-date-picker showTime format='YYYY-MM-DD HH:mm:ss' v-decorator="[ '${field.name}', {}]" />
           <#elseif "int,decimal,double,"?contains(field type)>
           <a-input-number v-decorator="[ '${field.name}', {}]" />
@@ -29,7 +29,7 @@
         </a-form-item>
 </#if>
 </#list>
-		
+
       </a-form>
     </a-spin>
   </a-modal>
@@ -114,13 +114,13 @@
             let formData = Object.assign(this.model, values);
             //时间格式化
             <#list fields as field>
-            <#if field.name !='id' && field type =='date'>
+            <#if field.name !='id' && field.typeName=='date'>
             formData.${field.name} = formData.${field.name}?formData.${field.name}.format():null;
-            <#elseif field.name !='id' && field type =='datetime' && !"createTime,updateTime"?contains(field.name) >
+            <#elseif field.name !='id' && field.typeName=='datetime' && !"createTime,updateTime"?contains(field.name) >
             formData.${field.name} = formData.${field.name}?formData.${field.name}.format('YYYY-MM-DD HH:mm:ss'):null;
             </#if>
             </#list>
-            
+
             console.log(formData)
             httpAction(httpurl,formData,method).then((res)=>{
               if(res.success){

@@ -118,7 +118,7 @@ public class DbHelper {
             ResultSet rs = metaData.getTables(null, "", tableName, new String[]{"TABLE"});
             Table table = null;
             if (rs.next()) {
-                table = new Table(rs.getString("REMARKS"), tableName, getAllColumn(tableName),getExportedKeys(tableName),getImportedKeys(tableName));
+                table = new Table(rs.getString("REMARKS"), tableName, getAllColumn(tableName), getExportedKeys(tableName), getImportedKeys(tableName));
             }
             return table;
         } catch (Exception e) {
@@ -132,20 +132,20 @@ public class DbHelper {
         Connection conn = getConnection(db);
         try {
             DatabaseMetaData metaData = conn.getMetaData();
-	    ResultSet rs = metaData.getExportedKeys(null, null, tableName);
+            ResultSet rs = metaData.getExportedKeys(null, null, tableName);
             List<ForeignKey> ls = new ArrayList<>();
             while (rs.next()) {
-            	ForeignKey fk = new ForeignKey(rs.getString("FK_NAME"), rs.getString("FKCOLUMN_NAME"), rs.getString("FKTABLE_NAME"), rs.getString("PKTABLE_NAME"), rs.getString("PKCOLUMN_NAME"), rs.getString("PK_NAME"), rs.getInt("UPDATE_RULE"), rs.getInt("DELETE_RULE"));
+                ForeignKey fk = new ForeignKey(rs.getString("FK_NAME"), rs.getString("FKCOLUMN_NAME"), rs.getString("FKTABLE_NAME"), rs.getString("PKTABLE_NAME"), rs.getString("PKCOLUMN_NAME"), rs.getString("PK_NAME"), rs.getInt("UPDATE_RULE"), rs.getInt("DELETE_RULE"));
                 ls.add(fk);
             }
-	    return ls;
-	} catch (SQLException e) {
+            return ls;
+        } catch (SQLException e) {
             throw new RuntimeException(e.getMessage(), e);
         } finally {
             closeConnection(conn);
         }
     }
-   
+
     private List<ForeignKey> getImportedKeys(String tableName) {
         Connection conn = getConnection(db);
         try {

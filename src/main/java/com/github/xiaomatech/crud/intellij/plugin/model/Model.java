@@ -10,16 +10,21 @@ import java.util.Set;
 public class Model extends Base {
     private String tableName;
     private List<Field> fields;
+    private List<ForeignKey> importKeys;
+    private List<ForeignKey> exportKeys;
 
     /**
      * @param comment   类的注释
      * @param name      类的全限定名
      * @param tableName 表的名称
      */
-    public Model(String comment, String name, String tableName, List<Field> fields) {
+    public Model(String comment, String name, String tableName, List<Field> fields, List<ForeignKey> importKeys, List<ForeignKey> exportKeys) {
         super(comment, name);
         this.tableName = tableName;
         this.fields = fields;
+
+        this.exportKeys = exportKeys;
+        this.importKeys = importKeys;
     }
 
     public List<Field> getFields() {

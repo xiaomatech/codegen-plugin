@@ -29,6 +29,9 @@ public class PsiFileUtils {
 
     public static void createPOMXML(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "pom.xml");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("pom.ftl");
         template.process(selection, sw);
@@ -37,6 +40,9 @@ public class PsiFileUtils {
 
     public static void createSwagger(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "Swagger2Config.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("config/Swagger2Config.ftl");
         template.process(selection, sw);
@@ -46,6 +52,9 @@ public class PsiFileUtils {
 
     public static void createApplicationJava(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "Application.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("Application.java.ftl");
         template.process(selection, sw);
@@ -56,6 +65,9 @@ public class PsiFileUtils {
 
     public static void createResultJava(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "Result.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("common/Result.java.ftl");
         template.process(selection, sw);
@@ -65,6 +77,9 @@ public class PsiFileUtils {
 
     public static void createRedisConfig(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "RedisConfig.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("config/RedisConfig.java.ftl");
         template.process(selection, sw);
@@ -74,6 +89,9 @@ public class PsiFileUtils {
 
     public static void createExceptionHandler(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "BaseExceptionHandler.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("exception/BaseExceptionHandler.java.ftl");
         template.process(selection, sw);
@@ -83,6 +101,9 @@ public class PsiFileUtils {
 
     public static void createBaseException(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "BaseException.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("exception/BaseException.java.ftl");
         template.process(selection, sw);
@@ -93,6 +114,9 @@ public class PsiFileUtils {
 
     public static void createApplicationYml(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "application.yml");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("application.yml.ftl");
         template.process(selection, sw);
@@ -101,6 +125,9 @@ public class PsiFileUtils {
 
     public static void createMapper(Project project, VirtualFile packageDir, Dao dao) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, dao.getModel().getSimpleName() + "Mapper.xml");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("mapper.ftl");
         template.process(dao, sw);
@@ -109,6 +136,9 @@ public class PsiFileUtils {
 
     public static void createModel(Project project, VirtualFile packageDir, Model model) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + ".java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         String templateName;
         if (model.getOrmType() == SelectionContext.MYBATIS) {
@@ -125,6 +155,9 @@ public class PsiFileUtils {
 
     public static void createVo(Project project, VirtualFile packageDir, Model model) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + "Vo.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         String templateName;
         templateName = "vo.ftl";
@@ -136,6 +169,9 @@ public class PsiFileUtils {
 
     public static void createFront(Project project, VirtualFile packageDir, Model model) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + ".list.vue");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         String templateName;
         templateName = "ant-design/list.vue.ftl";
@@ -144,7 +180,7 @@ public class PsiFileUtils {
         virtualFile.setBinaryContent(sw.toString().getBytes(CrudUtils.DEFAULT_CHARSET));
         CrudUtils.addWaitOptimizeFile(virtualFile);
 
-	VirtualFile virtualFileModal = packageDir.createChildData(project, model.getSimpleName() + ".modal.vue");
+        VirtualFile virtualFileModal = packageDir.createChildData(project, model.getSimpleName() + ".modal.vue");
         StringWriter swModal = new StringWriter();
         String templateNameModal;
         templateNameModal = "ant-design/modal.vue.ftl";
@@ -157,6 +193,9 @@ public class PsiFileUtils {
 
     public static void createDao(Project project, VirtualFile packageDir, Dao dao) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, dao.getSimpleName() + ".java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         String templateName;
         if (dao.getOrmType() == SelectionContext.MYBATIS) {
@@ -173,6 +212,9 @@ public class PsiFileUtils {
 
     public static void createService(Project project, VirtualFile packageDir, Service service) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, service.getSimpleName() + ".java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("service.ftl");
         template.process(service, sw);
@@ -183,6 +225,9 @@ public class PsiFileUtils {
 
     public static void createServiceImplJpa(Project project, VirtualFile packageDir, Service service) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, service.getSimpleName() + "Impl.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("service_impl.ftl");
         template.process(service, sw);
@@ -193,6 +238,9 @@ public class PsiFileUtils {
 
     public static void createTestServiceImplJpa(Project project, VirtualFile packageDir, Service service) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, service.getSimpleName() + "Test.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("test/ServiceTest.ftl");
         template.process(service, sw);
@@ -204,6 +252,9 @@ public class PsiFileUtils {
 
     public static void createController(Project project, VirtualFile packageDir, Controller controller) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, controller.getSimpleName() + ".java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("controller.ftl");
         template.process(controller, sw);
@@ -211,9 +262,12 @@ public class PsiFileUtils {
 
         CrudUtils.addWaitOptimizeFile(virtualFile);
     }
-    
+
     public static void createTestController(Project project, VirtualFile packageDir, Controller controller) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, controller.getSimpleName() + "Test.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("test/ControllerTest.ftl");
         template.process(controller, sw);
@@ -224,6 +278,9 @@ public class PsiFileUtils {
 
     public static void createDomainUtils(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "DomainUtils.java");
+        if (virtualFile.exists()) {
+            return
+        }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("test/DomainUtils.ftl");
         template.process(selection, sw);
@@ -264,7 +321,7 @@ public class PsiFileUtils {
             if (!StringUtils.isBlank(modelPackage)) {
                 modelPackage += ".";
             }
-            Model model = new Model(table.getComment(), modelPackage + CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, table.getName()), table.getName(), fields);
+            Model model = new Model(table.getComment(), modelPackage + CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, table.getName()), table.getName(), fields, table.getImportKeys(), table.getExportKeys());
             model.setOrmType(selection.getOrmType());
             PsiFileUtils.createModel(project, modelPackageDir, model);
 
@@ -317,9 +374,9 @@ public class PsiFileUtils {
             service.getImports().add(service.getDao().getName());
             service.getImports().add(service.getName());
             PsiFileUtils.createServiceImplJpa(project, serviceImplPackageDir, service);
-	    
-	    VirtualFile serviceTestImplPackageDir = createTestPackageDir(serviceImplPackage, moduleRootPath);
-	    PsiFileUtils.createTestServiceImplJpa(project, serviceTestImplPackageDir, service);
+
+            VirtualFile serviceTestImplPackageDir = createTestPackageDir(serviceImplPackage, moduleRootPath);
+            PsiFileUtils.createTestServiceImplJpa(project, serviceTestImplPackageDir, service);
 
             //controller生成
             String controllerPackage = selection.getControllerPackage();
@@ -332,9 +389,9 @@ public class PsiFileUtils {
             }
             Controller controller = new Controller(table.getComment(), controllerPackage + CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, table.getName()) + "Controller", service);
             PsiFileUtils.createController(project, controllerPackageDir, controller);
-	    
-	    VirtualFile controllerTestPackageDir = createTestPackageDir(controllerPackage, moduleRootPath);
-	    PsiFileUtils.createTestController(project, controllerTestPackageDir, controller);
+
+            VirtualFile controllerTestPackageDir = createTestPackageDir(controllerPackage, moduleRootPath);
+            PsiFileUtils.createTestController(project, controllerTestPackageDir, controller);
         }
     }
 }

@@ -1,12 +1,6 @@
 package com.github.xiaomatech.crud.intellij.plugin.util;
 
-import com.github.xiaomatech.crud.intellij.plugin.model.Column;
-import com.github.xiaomatech.crud.intellij.plugin.model.Controller;
-import com.github.xiaomatech.crud.intellij.plugin.model.Dao;
-import com.github.xiaomatech.crud.intellij.plugin.model.Field;
-import com.github.xiaomatech.crud.intellij.plugin.model.Model;
-import com.github.xiaomatech.crud.intellij.plugin.model.Service;
-import com.github.xiaomatech.crud.intellij.plugin.model.Table;
+import com.github.xiaomatech.crud.intellij.plugin.model.*;
 import com.google.common.base.CaseFormat;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.io.FileUtil;
@@ -30,7 +24,7 @@ public class PsiFileUtils {
     public static void createPOMXML(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "pom.xml");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("pom.ftl");
@@ -41,7 +35,7 @@ public class PsiFileUtils {
     public static void createSwagger(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "Swagger2Config.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("config/Swagger2Config.ftl");
@@ -53,7 +47,7 @@ public class PsiFileUtils {
     public static void createApplicationJava(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "Application.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("Application.java.ftl");
@@ -66,7 +60,7 @@ public class PsiFileUtils {
     public static void createResultJava(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "Result.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("common/Result.java.ftl");
@@ -78,7 +72,7 @@ public class PsiFileUtils {
     public static void createRedisConfig(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "RedisConfig.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("config/RedisConfig.java.ftl");
@@ -90,7 +84,7 @@ public class PsiFileUtils {
     public static void createExceptionHandler(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "BaseExceptionHandler.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("exception/BaseExceptionHandler.java.ftl");
@@ -102,7 +96,7 @@ public class PsiFileUtils {
     public static void createBaseException(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "BaseException.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("exception/BaseException.java.ftl");
@@ -115,7 +109,7 @@ public class PsiFileUtils {
     public static void createApplicationYml(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "application.yml");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("application.yml.ftl");
@@ -126,7 +120,7 @@ public class PsiFileUtils {
     public static void createMapper(Project project, VirtualFile packageDir, Dao dao) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, dao.getModel().getSimpleName() + "Mapper.xml");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("mapper.ftl");
@@ -137,7 +131,7 @@ public class PsiFileUtils {
     public static void createModel(Project project, VirtualFile packageDir, Model model) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + ".java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         String templateName;
@@ -156,7 +150,7 @@ public class PsiFileUtils {
     public static void createVo(Project project, VirtualFile packageDir, Model model) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + "Vo.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         String templateName;
@@ -170,7 +164,7 @@ public class PsiFileUtils {
     public static void createFront(Project project, VirtualFile packageDir, Model model) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, model.getSimpleName() + ".list.vue");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         String templateName;
@@ -194,7 +188,7 @@ public class PsiFileUtils {
     public static void createDao(Project project, VirtualFile packageDir, Dao dao) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, dao.getSimpleName() + ".java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         String templateName;
@@ -213,7 +207,7 @@ public class PsiFileUtils {
     public static void createService(Project project, VirtualFile packageDir, Service service) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, service.getSimpleName() + ".java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("service.ftl");
@@ -226,7 +220,7 @@ public class PsiFileUtils {
     public static void createServiceImplJpa(Project project, VirtualFile packageDir, Service service) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, service.getSimpleName() + "Impl.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("service_impl.ftl");
@@ -239,7 +233,7 @@ public class PsiFileUtils {
     public static void createTestServiceImplJpa(Project project, VirtualFile packageDir, Service service) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, service.getSimpleName() + "Test.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("test/ServiceTest.ftl");
@@ -253,7 +247,7 @@ public class PsiFileUtils {
     public static void createController(Project project, VirtualFile packageDir, Controller controller) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, controller.getSimpleName() + ".java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("controller.ftl");
@@ -266,7 +260,7 @@ public class PsiFileUtils {
     public static void createTestController(Project project, VirtualFile packageDir, Controller controller) throws Exception {
         VirtualFile virtualFile = packageDir.createChildData(project, controller.getSimpleName() + "Test.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("test/ControllerTest.ftl");
@@ -279,7 +273,7 @@ public class PsiFileUtils {
     public static void createDomainUtils(Project project, VirtualFile root, Selection selection) throws Exception {
         VirtualFile virtualFile = root.createChildData(project, "DomainUtils.java");
         if (virtualFile.exists()) {
-            return
+            return;
         }
         StringWriter sw = new StringWriter();
         Template template = freemarker.getTemplate("test/DomainUtils.ftl");
